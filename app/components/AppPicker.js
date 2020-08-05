@@ -16,20 +16,31 @@ import defaultStlyes from "../config/styles";
 import AppText from "./AppText";
 import Screen from "./Screen";
 import PickerItem from "./PickerItem";
+import { Picker } from "react-native";
 
-function AppPicker({ icon, items, onSelectItem, placeHolder, selectedItem }) {
+function AppPicker({
+  icon,
+  items,
+  width = "100%",
+  numberOfColumns = 1,
+  onSelectItem,
+  placeHolder,
+  PickerItemComponent = PickerItem,
+  selectedItem,
+}) {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <React.Fragment>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-        <View style={styles.container}>
+        <View style={[styles.container, { width }]}>
           {icon && (
             <MaterialCommunityIcons name={icon} style={styles.icon} size={20} />
           )}
-          <AppText
-            style={styles.text}
-            text={selectedItem ? selectedItem.label : placeHolder}
-          />
+          {selectedItem ? (
+            <AppText style={styles.text} text={selectedItem.label} />
+          ) : (
+            <AppText style={styles.placeHolder} text={placeHolder} />
+          )}
           <MaterialCommunityIcons name="chevron-down" size={20} />
         </View>
       </TouchableWithoutFeedback>
@@ -46,10 +57,11 @@ function AppPicker({ icon, items, onSelectItem, placeHolder, selectedItem }) {
           </View>
           <FlatList
             data={items}
+            numColumns={numberOfColumns}
             keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) => (
-              <PickerItem
-                label={item.label}
+              <PickerItemComponent
+                item={item}
                 onPress={() => {
                   setModalVisible(false);
                   onSelectItem(item);
@@ -65,10 +77,9 @@ function AppPicker({ icon, items, onSelectItem, placeHolder, selectedItem }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.lightGrey,
+    backgroundColor: colors.veryLightGrey,
     borderRadius: 25,
     flexDirection: "row",
-    width: "100%",
     alignItems: "center",
     padding: 15,
     marginVertical: 10,
@@ -83,6 +94,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+  },
+  placeHolder: {
+    flex: 1,
+    color: "#ababab",
   },
   text: {
     flex: 1,

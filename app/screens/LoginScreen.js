@@ -1,25 +1,10 @@
 import React from "react";
-import {
-  StyleSheet,
-  Image,
-  View,
-  ImageBackground,
-  Dimensions,
-  KeyboardAvoidingView,
-  StatusBar,
-} from "react-native";
+import { StyleSheet, Image, View, Dimensions } from "react-native";
 import Screen from "../components/Screen";
 
 import * as Yup from "yup";
-
-import AppTextInput from "../components/AppTextInput";
-import AppButton from "../components/AppButton";
 import { LinearGradient } from "expo-linear-gradient";
-import AppText from "../components/AppText";
-import ErrorMessage from "../components/ErrorMessage";
-import AppFormField from "../components/forms/AppFormField";
-import SubmitButton from "../components/SubmitButton";
-import AppForm from "../components/forms/AppForm";
+import { AppForm, AppFormField, SubmitButton } from "../components/forms";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),

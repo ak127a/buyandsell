@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Button, Image } from "react-native";
 
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
@@ -14,6 +14,13 @@ import AccountScreen from "./app/screens/AccountScreen";
 import AppTextInput from "./app/components/AppTextInput";
 import AppPicker from "./app/components/AppPicker";
 import LoginScreen from "./app/screens/LoginScreen";
+import ListingEditScreen from "./app/screens/ListingEditScreen";
+import ListItemDeleteAction from "./app/components/ListItemDeleteAction";
+
+import * as ImagePicker from "expo-image-picker";
+import * as Permissions from "expo-permissions";
+import ImageInput from "./app/components/ImageInput";
+import ImageInputList from "./app/components/ImageInputList";
 
 const categories = [
   { label: "furniture", value: 1 },
@@ -22,11 +29,9 @@ const categories = [
 ];
 
 export default function App() {
-  const [category, setCategory] = useState(categories[0]);
-
   return (
     <Screen>
-      <LoginScreen />
+      <ListingEditScreen />
     </Screen>
   );
 }

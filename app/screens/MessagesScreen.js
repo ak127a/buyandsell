@@ -31,6 +31,36 @@ const initialMessages = [
     description: "blo4",
     image: require("../assets/bg2.jpg"),
   },
+  {
+    id: 5,
+    title: "bla2",
+    description: "blo4",
+    image: require("../assets/bg2.jpg"),
+  },
+  {
+    id: 6,
+    title: "bla2",
+    description: "blo4",
+    image: require("../assets/bg2.jpg"),
+  },
+  {
+    id: 7,
+    title: "bla2",
+    description: "blo4",
+    image: require("../assets/bg2.jpg"),
+  },
+  {
+    id: 8,
+    title: "bla2",
+    description: "blo4",
+    image: require("../assets/bg2.jpg"),
+  },
+  {
+    id: 9,
+    title: "bla2",
+    description: "blo4",
+    image: require("../assets/bg2.jpg"),
+  },
 ];
 
 function MessagesScreen() {
